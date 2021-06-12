@@ -5,5 +5,10 @@ export default createStore({
         return {
             counter: 1
         }
+    },
+    mutations: {
+        add(state, payLoad) {
+            state.counter += payLoad.value
+        }
     }
 })

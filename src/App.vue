@@ -4,7 +4,7 @@
     <div class="card">
       <h1>Про Vuex</h1>
       <h2>Счетчик {{ $store.state.counter }}</h2>
-      <button class="btn" @click="increments">+</button>
+      <button class="btn" @click="add">Добавить</button>
     </div>
   </div>
 </template>
@@ -13,8 +13,11 @@
 import TheNavbar from './components/TheNavbar'
 export default {
   methods: {
-    increments() {
-      this.$store.state.counter++
+    add() {
+      this.$store.commit({
+          type: 'add',
+          value: 1
+        })
     }
   },
   components: {TheNavbar}
