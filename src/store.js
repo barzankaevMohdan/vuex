@@ -12,13 +12,18 @@ export default createStore({
         }
     },
     actions: {
-        incrementAsync(context, payLoad) {
+        // incrementAsync(context, payLoad) {
+        //     setTimeout(() => {
+        //         context.commit({
+        //             type: 'add',
+        //             value: 10
+        //         })
+        //         context.commit('add', payLoad)
+        //     }, payLoad.delay)
+        // }
+        incrementAsync({ commit }, payLoad) {
             setTimeout(() => {
-                // context.commit({
-                //     type: 'add',
-                //     value: 10
-                // })
-                context.commit('add', payLoad)
+                commit('add', payLoad)
             }, payLoad.delay)
         }
     },
