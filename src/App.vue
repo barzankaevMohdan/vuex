@@ -5,6 +5,7 @@
       <h1>Про Vuex</h1>
       <h2>Счетчик {{ $store.getters.counter }} ({{ $store.getters.doubleCounter }})</h2>
       <button class="btn" @click="add">Добавить</button>
+      <button class="btn danger" @click="incrementAsync">Добавить 10</button>
     </div>
   </div>
 </template>
@@ -18,6 +19,12 @@ export default {
           type: 'add',
           value: 1
         })
+    },
+    incrementAsync() {
+      this.$store.dispatch('incrementAsync', {
+        value: 10,
+        delay: 200
+      })
     }
   },
   components: {TheNavbar}

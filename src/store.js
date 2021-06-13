@@ -3,7 +3,7 @@ import { createStore } from "vuex";
 export default createStore({
     state() {
         return {
-            counter: 1
+            counter: 0
         }
     },
     mutations: {
@@ -11,11 +11,22 @@ export default createStore({
             state.counter += payLoad.value
         }
     },
+    actions: {
+        incrementAsync(context, payLoad) {
+            setTimeout(() => {
+                // context.commit({
+                //     type: 'add',
+                //     value: 10
+                // })
+                context.commit('add', payLoad)
+            }, payLoad.delay)
+        }
+    },
     getters: {
         counter(state) {
-            if(state.counter > 50) {
-                return 0
-            }
+            // if(state.counter > 50) {
+            //     return 0
+            // }
             return state.counter
         },
         doubleCounter(_, getters) {
