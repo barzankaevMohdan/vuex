@@ -15,14 +15,19 @@ import {mapGetters, mapMutations, mapActions} from 'vuex'
 import TheNavbar from './components/TheNavbar'
 export default {
   computed: {
-    ...mapGetters(['counter', 'doubleCounter', 'upperCaseTitle'])
+    ...mapGetters(['upperCaseTitle']),
+    ...mapGetters('count', ['counter', 'doubleCounter'])
+    // ...mapGetters({
+    //   counter: 'count/counter',
+    //   doubleCounter: 'count/doubleCounter'
+    // })
   },
   methods: {
     ...mapMutations({
-      increment: 'add'
+      increment: 'count/add'
     }),
     
-    ...mapActions(['incrementAsync']),
+    ...mapActions('count', ['incrementAsync']),
 
     add() {
       this.increment({value: 1})
